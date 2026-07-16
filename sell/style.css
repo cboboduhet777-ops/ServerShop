@@ -1,0 +1,659 @@
+* {
+    box-sizing:border-box;
+}
+
+
+body {
+
+    margin:0;
+
+    min-height:100vh;
+
+    font-family:'Inter',sans-serif;
+
+    overflow:hidden;
+
+    color:white;
+
+}
+
+
+
+/* ФОН */
+
+.background {
+
+    position:fixed;
+
+    inset:0;
+
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.65)
+    ),
+    url("images/fon.jpg");
+
+
+    background-size:cover;
+
+    background-position:center;
+
+    z-index:-1;
+
+}
+
+
+
+/* 💲 ДОЛЛАРЫ */
+
+#money-container {
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:1;
+
+}
+
+
+
+.money {
+
+    position:absolute;
+
+    top:-40px;
+
+    color:#00ff66;
+
+    font-size:22px;
+
+    animation:moneyFall linear infinite;
+
+}
+
+
+
+@keyframes moneyFall {
+
+
+    0% {
+
+        transform:
+        translateY(-40px)
+        translateX(0)
+        rotate(0deg);
+
+    }
+
+
+    50% {
+
+        transform:
+        translateY(50vh)
+        translateX(50px)
+        rotate(180deg);
+
+    }
+
+
+    100% {
+
+        transform:
+        translateY(110vh)
+        translateX(-50px)
+        rotate(360deg);
+
+    }
+
+}
+
+
+
+/* ОСНОВА */
+
+.container {
+
+    width:100%;
+
+    max-width:500px;
+
+    min-height:100vh;
+
+    margin:auto;
+
+    padding:20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+
+
+/* МЕНЮ ВЕРТИКАЛЬНО */
+
+.menu {
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+
+
+/* КНОПКИ */
+
+.shop-button {
+
+    width:100%;
+
+    height:60px;
+
+    border-radius:20px;
+
+    border:none;
+
+    background:rgba(15,15,15,.9);
+
+    color:white;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+
+
+/* ===================== */
+/* 💲 ЛЕТЯЩИЕ ДОЛЛАРЫ */
+/* ===================== */
+
+
+#money-container {
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:10;
+
+}
+
+
+
+.money {
+
+    position:absolute;
+
+    top:-50px;
+
+    color:#00ff66;
+
+    user-select:none;
+
+    pointer-events:none;
+
+    opacity:.9;
+
+    animation:moneyFall linear infinite;
+
+}
+
+
+
+/* ПАДЕНИЕ ДОЛЛАРОВ */
+
+@keyframes moneyFall {
+
+
+    0% {
+
+        transform:
+
+        translateY(-50px)
+
+        translateX(0)
+
+        rotate(0deg);
+
+    }
+
+
+    50% {
+
+        transform:
+
+        translateY(50vh)
+
+        translateX(40px)
+
+        rotate(180deg);
+
+    }
+
+
+    100% {
+
+        transform:
+
+        translateY(110vh)
+
+        translateX(-40px)
+
+        rotate(360deg);
+
+    }
+
+}
+
+/* ===================== */
+/* 🛒 КРАСИВАЯ ЗАЯВКА */
+/* ===================== */
+
+
+.product-card {
+
+    width:100%;
+
+    background:rgba(15,15,15,.85);
+
+    border-radius:25px;
+
+    padding:20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.7);
+
+}
+
+
+
+/* ❌ Ошибка заявки */
+
+.error-message {
+
+    width:100%;
+
+    text-align:center;
+
+    color:#ff4444;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    margin-top:10px;
+
+}
+
+
+
+/* Фото */
+
+.photo-input {
+
+    width:100%;
+
+    height:160px;
+
+    background:rgba(255,255,255,.08);
+
+    border:2px dashed rgba(255,255,255,.4);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+
+
+.photo-preview {
+
+    width:100%;
+
+    height:160px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    display:none;
+
+    margin-top:10px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.5);
+
+}
+
+
+
+/* Поля */
+
+.shop-input {
+
+    width:100%;
+
+    min-height:55px;
+
+    border-radius:18px;
+
+    border:none;
+
+    outline:none;
+
+    padding:15px;
+
+    background:rgba(255,255,255,.12);
+
+    color:white;
+
+    font-size:17px;
+
+}
+
+
+
+.shop-input::placeholder {
+
+    color:rgba(255,255,255,.6);
+
+}
+
+
+
+/* Описание */
+
+textarea.shop-input {
+
+    height:120px;
+
+    resize:none;
+
+}
+
+
+
+/* Цена + валюта */
+
+.price-row {
+
+    width:100%;
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+
+.price-row .shop-input {
+
+    flex:1;
+
+}
+
+
+
+/* Кнопка заявки */
+
+.product-card .shop-button {
+
+    margin-top:10px;
+
+    background:linear-gradient(
+    135deg,
+    #00ff66,
+    #009933
+    );
+
+    color:white;
+
+    box-shadow:
+    0 0 25px rgba(0,255,100,.4);
+
+}
+
+
+
+/* ✨ Плавное появление меню */
+
+.menu {
+
+    animation: menuShow 0.5s ease;
+
+}
+
+
+@keyframes menuShow {
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* 🔥 Свечение кнопок */
+
+.shop-button {
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+
+.shop-button:hover {
+
+    transform:scale(1.05);
+
+    box-shadow:
+    0 0 15px orange,
+    0 0 35px orange;
+
+}
+
+
+
+/* эффект нажатия */
+
+.shop-button:active {
+
+    transform:scale(0.95);
+
+}
+
+
+
+/* ✨ Блик на кнопке */
+
+.shop-button::before {
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:50%;
+
+    height:100%;
+
+
+    background:rgba(255,255,255,0.25);
+
+
+    transform:skewX(-30deg);
+
+    transition:.5s;
+
+}
+
+
+
+.shop-button:hover::before {
+
+    left:120%;
+
+}
+
+
+
+/* 🎬 Кнопки появляются по очереди */
+
+.menu .shop-button {
+
+    opacity:0;
+
+    animation: buttonShow 1s ease forwards;
+
+}
+
+
+.menu .shop-button:nth-child(1){
+    animation-delay:0.1s;
+}
+
+
+.menu .shop-button:nth-child(2){
+    animation-delay:0.2s;
+}
+
+
+.menu .shop-button:nth-child(3){
+    animation-delay:0.3s;
+}
+
+
+
+@keyframes buttonShow {
+
+    from {
+
+        opacity:0;
+
+        transform:translateX(-50px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+
+
+/* 🌙 Исчезновение окна */
+
+#app.fade-out {
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+}
+
+
+/* ✨ Появление окна */
+
+#app {
+
+    transition:0.4s ease;
+
+}
+
+
+#app.fade-in {
+
+    animation: fadeIn 0.5s ease;
+
+}
+
+
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}

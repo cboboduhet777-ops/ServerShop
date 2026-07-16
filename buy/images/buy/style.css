@@ -1,0 +1,540 @@
+* {
+    box-sizing:border-box;
+}
+
+
+body {
+
+    margin:0;
+
+    min-height:100vh;
+
+    font-family:'Inter',sans-serif;
+
+    overflow:hidden;
+
+    color:white;
+
+}
+
+
+
+/* ФОН */
+
+.background {
+
+    position:fixed;
+
+    inset:0;
+
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.65)
+    ),
+    url("images/fon.jpg");
+
+
+    background-size:cover;
+
+    background-position:center;
+
+    z-index:-1;
+
+}
+
+
+
+/* 🌸 САКУРА */
+
+#sakura-container {
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:1;
+
+}
+
+
+
+.petal {
+
+    position:absolute;
+
+    top:-30px;
+
+    color:#ffb7d5;
+
+    font-size:20px;
+
+    animation:fall linear infinite;
+
+}
+
+
+
+@keyframes fall {
+
+
+    0% {
+
+        transform:
+        translateY(-30px)
+        translateX(0)
+        rotate(0deg);
+
+    }
+
+
+    50% {
+
+        transform:
+        translateY(50vh)
+        translateX(40px)
+        rotate(180deg);
+
+    }
+
+
+    100% {
+
+        transform:
+        translateY(110vh)
+        translateX(-40px)
+        rotate(360deg);
+
+    }
+
+}
+
+
+
+/* ОСНОВА */
+
+.container {
+
+    width:100%;
+
+    max-width:500px;
+
+    min-height:100vh;
+
+    margin:auto;
+
+    padding:20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+
+/* БАННЕР */
+
+.wood-banner {
+
+    width:100%;
+
+    height:180px;
+
+
+    background:url("images/banner.jpg");
+
+
+    background-size:cover;
+
+    background-position:center;
+
+
+    border-radius:25px;
+
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.7);
+
+}
+
+
+
+/* МЕНЮ */
+
+.menu {
+    width:100%;
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+
+
+/* КНОПКИ */
+
+.shop-button {
+
+    width:100%;
+
+    height:60px;
+
+
+    border-radius:20px;
+
+
+    border:none;
+
+
+    background:rgba(15,15,15,.9);
+
+
+    color:white;
+
+
+    font-size:20px;
+
+
+    font-weight:700;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.6);
+
+}
+
+
+
+.shop-button:hover {
+
+    transform:scale(1.03);
+
+
+    box-shadow:
+    0 0 30px orange;
+
+}
+
+
+
+/* ================= */
+/* 📦 ЗАЯВКА */
+/* ================= */
+
+
+.shop-input {
+
+    width:100%;
+
+    height:55px;
+
+    border-radius:18px;
+
+    border:none;
+
+    padding:15px;
+
+    background:rgba(255,255,255,.12);
+
+    color:white;
+
+    font-size:17px;
+
+}
+
+
+
+textarea.shop-input {
+
+    height:120px;
+
+    resize:none;
+
+}
+
+
+
+.price-row {
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+
+
+.price-row .shop-input {
+
+    flex:1;
+
+}
+
+
+
+/* ================= */
+/* 🛒 ТОВАР */
+/* ================= */
+
+.product-card {
+
+    width:100%;
+
+    background:rgba(0,0,0,.6);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.5);
+
+}
+
+
+
+#app {
+
+    width:100%;
+
+    margin-top:0;
+
+}
+
+
+
+.menu {
+
+    margin-top:0 !important;
+
+}
+
+
+
+#app {
+    position: relative;
+    top: -600px;
+}
+
+
+
+/* ✨ Плавное появление меню */
+
+.menu {
+
+    animation: menuShow 0.5s ease;
+
+}
+
+
+@keyframes menuShow {
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* 🔥 Свечение кнопок */
+
+.shop-button {
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+
+.shop-button:hover {
+
+    transform:scale(1.05);
+
+    box-shadow:
+    0 0 15px orange,
+    0 0 35px orange;
+
+}
+
+
+
+/* эффект нажатия */
+
+.shop-button:active {
+
+    transform:scale(0.95);
+
+}
+
+
+
+/* ✨ Блик на кнопке */
+
+.shop-button::before {
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:50%;
+
+    height:100%;
+
+
+    background:rgba(255,255,255,0.25);
+
+
+    transform:skewX(-30deg);
+
+    transition:.5s;
+
+}
+
+
+
+.shop-button:hover::before {
+
+    left:120%;
+
+}
+
+
+
+/* 🎬 Кнопки появляются по очереди */
+
+.menu .shop-button {
+
+    opacity:0;
+
+    animation: buttonShow 1s ease forwards;
+
+}
+
+
+.menu .shop-button:nth-child(1){
+    animation-delay:0.1s;
+}
+
+
+.menu .shop-button:nth-child(2){
+    animation-delay:0.2s;
+}
+
+
+.menu .shop-button:nth-child(3){
+    animation-delay:0.3s;
+}
+
+
+
+@keyframes buttonShow {
+
+    from {
+
+        opacity:0;
+
+        transform:translateX(-50px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+
+
+/* 🌙 Исчезновение окна */
+
+#app.fade-out {
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+}
+
+
+/* ✨ Появление окна */
+
+#app {
+
+    transition:0.4s ease;
+
+}
+
+
+#app.fade-in {
+
+    animation: fadeIn 0.5s ease;
+
+}
+
+
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
