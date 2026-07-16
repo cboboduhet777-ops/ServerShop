@@ -1,0 +1,457 @@
+* {
+    box-sizing:border-box;
+}
+
+
+body {
+
+    margin:0;
+
+    min-height:100vh;
+
+    font-family:'Inter', sans-serif;
+
+    overflow:hidden;
+
+    color:white;
+
+}
+
+
+
+/* ФОН */
+
+.background {
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.5),
+        rgba(0,0,0,.65)
+    ),
+    url("images/fon.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    z-index:-1;
+
+}
+
+
+
+/* ОСНОВА */
+
+.container {
+
+    width:100%;
+
+    max-width:500px;
+
+    min-height:100vh;
+
+    margin:auto;
+
+    padding:25px 20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+
+/* 🎮 БАННЕР */
+
+.wood-banner {
+
+    width:100%;
+
+    height:180px;
+
+    background:url("images/banner.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    border-radius:25px;
+
+}
+
+
+
+/* МЕНЮ */
+
+.menu {
+
+    width:100%;
+
+    margin-top:40px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+
+
+/* КНОПКИ-КАРТИНКИ */
+
+.shop-image-button {
+
+    width:100%;
+
+    height:55px;
+
+    object-fit:cover;
+
+    display:block;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:
+
+    0 12px 35px rgba(0,0,0,.55);
+
+}
+
+
+
+.shop-image-button:hover {
+
+    transform:scale(1.03);
+
+}
+
+
+
+.shop-image-button:active {
+
+    transform:scale(.97);
+
+}
+
+
+
+/* ОБЫЧНЫЕ КНОПКИ */
+
+.shop-button {
+
+    width:100%;
+
+    height:55px;
+
+    border-radius:18px;
+
+    border:none;
+
+    background:rgba(15,15,15,.9);
+
+    color:white;
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+
+
+/* ===================== */
+/* ❄️ СНЕЖИНКИ */
+/* ===================== */
+
+
+#snow-container {
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:10;
+
+}
+
+
+
+.snowflake {
+
+    position:absolute;
+
+    top:-50px;
+
+    color:white;
+
+    user-select:none;
+
+    pointer-events:none;
+
+    opacity:.8;
+
+    animation:snowFall linear infinite;
+
+}
+
+
+
+/* ПАДЕНИЕ СНЕГА */
+
+@keyframes snowFall {
+
+
+    0% {
+
+        transform:
+
+        translateY(-50px)
+
+        rotate(0deg);
+
+    }
+
+
+    100% {
+
+        transform:
+
+        translateY(110vh)
+
+        rotate(360deg);
+
+    }
+
+}
+
+
+
+/* ✨ Плавное появление меню */
+
+.menu {
+
+    animation: menuShow 0.5s ease;
+
+}
+
+
+@keyframes menuShow {
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+/* 🔥 Свечение кнопок */
+
+.shop-button {
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+
+.shop-button:hover {
+
+    transform:scale(1.05);
+
+    box-shadow:
+    0 0 15px orange,
+    0 0 35px orange;
+
+}
+
+
+
+/* эффект нажатия */
+
+.shop-button:active {
+
+    transform:scale(0.95);
+
+}
+
+
+
+/* ✨ Блик на кнопке */
+
+.shop-button::before {
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:50%;
+
+    height:100%;
+
+
+    background:rgba(255,255,255,0.25);
+
+
+    transform:skewX(-30deg);
+
+    transition:.5s;
+
+}
+
+
+
+.shop-button:hover::before {
+
+    left:120%;
+
+}
+
+
+
+/* 🎬 Кнопки появляются по очереди */
+
+.menu .shop-button {
+
+    opacity:0;
+
+    animation: buttonShow 1s ease forwards;
+
+}
+
+
+.menu .shop-button:nth-child(1){
+    animation-delay:0.1s;
+}
+
+
+.menu .shop-button:nth-child(2){
+    animation-delay:0.2s;
+}
+
+
+.menu .shop-button:nth-child(3){
+    animation-delay:0.3s;
+}
+
+
+
+@keyframes buttonShow {
+
+    from {
+
+        opacity:0;
+
+        transform:translateX(-50px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+
+
+/* 🌙 Исчезновение окна */
+
+#app.fade-out {
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+}
+
+
+/* ✨ Появление окна */
+
+#app {
+
+    transition:0.4s ease;
+
+}
+
+
+#app.fade-in {
+
+    animation: fadeIn 0.5s ease;
+
+}
+
+
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
