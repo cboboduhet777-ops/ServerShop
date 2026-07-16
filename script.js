@@ -1,159 +1,406 @@
-function showHome() {
+function showSellMenu(){
 
-    document.getElementById("app").innerHTML = `
+document.getElementById("app").innerHTML = `
 
-    <div class="menu">
-
-
-        <img class="shop-image-button"
-        src="images/sell.jpg"
-        onclick="openSell()">
+<div class="menu">
 
 
-
-        <img class="shop-image-button"
-        src="images/buy.jpg"
-        onclick="openBuy()">
+<h2 class="title">
+🏪 Магазин ServerShop
+</h2>
 
 
 
-        <img class="shop-image-button"
-        src="images/info.jpg">
+<button class="shop-button"
+onclick="openMinecraftSell()">
+🎮 Minecraft
+</button>
 
 
 
-        <img class="shop-image-button"
-        src="images/profile.jpg">
-
-
-    </div>
-
-    `;
-
-}
+<button class="shop-button"
+onclick="openTelegramSell()">
+💬 Telegram
+</button>
 
 
 
-// 💰 Продажа
+<button class="shop-button"
+onclick="goHome()">
+⬅ Назад
+</button>
 
-function openSell(){
 
-    window.location.href = "sell/index.html";
+</div>
+
+`;
 
 }
 
 
 
-// 🛒 Покупка
+// 🎮 Minecraft серверы
 
-function openBuy(){
+function openMinecraftSell(){
 
-    window.location.href = "buy/index.html";
+document.getElementById("app").innerHTML = `
+
+<div class="menu">
+
+
+<button class="shop-button"
+onclick="showSellMenu()">
+⬅ Назад
+</button>
+
+
+<h2 class="title">
+🎮 Minecraft
+</h2>
+
+
+<button class="shop-button"
+onclick="openServer('NeverTime')">
+🌎 NeverTime
+</button>
+
+
+<button class="shop-button"
+onclick="openServer('FunTime')">
+🌎 FunTime
+</button>
+
+
+<button class="shop-button"
+onclick="openServer('Phoenix')">
+🌎 Phoenix
+</button>
+
+
+<button class="shop-button"
+onclick="openServer('FrizMine')">
+🌎 FrizMine
+</button>
+
+
+<button class="shop-button"
+onclick="openServer('WastoPE')">
+🌎 WastoPE
+</button>
+
+
+</div>
+
+`;
 
 }
 
 
 
-// ❄️ Анимация снега
 
-function createSnow(){
+// 📦 Товары сервера
 
-    let box = document.getElementById("snow-container");
-
-
-    if(!box) return;
+function openServer(server){
 
 
-    for(let i = 0; i < 60; i++){
+let products =
+JSON.parse(localStorage.getItem("products")) || [];
 
 
-        let snow = document.createElement("div");
+
+let serverProducts =
+products.filter(item =>
+item.type === server
+);
 
 
-        snow.className = "snowflake";
+
+let html = `
+
+<div class="menu">
 
 
-        snow.innerHTML = "❄";
+<button class="shop-button"
+onclick="openMinecraftSell()">
+⬅ Назад
+</button>
 
 
-        snow.style.left =
-        Math.random() * 100 + "%";
+<h2 class="title">
+🎮 ${server}
+</h2>
+
+`;
 
 
-        snow.style.fontSize =
-        (10 + Math.random() * 20) + "px";
 
+if(serverProducts.length === 0){
 
-        snow.style.animationDuration =
-        (5 + Math.random() * 8) + "s";
+html += `
 
+<p>
+📦 Пока нет товаров
+</p>
 
-        snow.style.animationDelay =
-        Math.random() * 5 + "s";
-
-
-        box.appendChild(snow);
-
-    }
+`;
 
 }
 
+
+
+serverProducts.forEach(item=>{
+
+
+html += `
+
+<div class="product-card">
+
+
+<div class="product-photo">
+📷 Фото товара
+</div>
+
+
+
+<p>
+📝 Описание:
+<br>
+${item.description}
+</p>
+
+
+
+<p>
+💲 Цена:
+<br>
+${item.price}
+</p>
+
+
+
+<p>
+👤 Продавец:
+<br>
+${item.user}
+</p>
+
+
+
+<button class="shop-button"
+onclick="buyProduct('${item.type}')">
+🛒 Купить
+</button>
+
+
+</div>
+
+`;
+
+});
+
+
+
+html += `
+
+</div>
+
+`;
+
+
+document.getElementById("app").innerHTML = html;
+
+
+}
+
+
+
+// 💬 Telegram товары
+
+function openTelegramSell(){
+
+let products =
+JSON.parse(localStorage.getItem("products")) || [];
+
+
+let telegramProducts =
+products.filter(item =>
+item.type.startsWith("Telegram")
+);
+
+
+
+let html = `
+
+<div class="menu">
+
+
+<button class="shop-button"
+onclick="showSellMenu()">
+⬅ Назад
+</button>
+
+
+
+<h2 class="title">
+💬 Telegram
+</h2>
+
+`;
+
+
+
+if(telegramProducts.length === 0){
+
+html += `
+
+<p>
+📦 Пока нет Telegram товаров
+</p>
+
+`;
+
+}
+
+
+
+telegramProducts.forEach(item=>{
+
+
+html += `
+
+<div class="product-card">
+
+
+<div class="product-photo">
+📷 Фото товара
+</div>
+
+
+
+<p>
+📝 Описание:
+<br>
+${item.description}
+</p>
+
+
+
+<p>
+💲 Цена:
+<br>
+${item.price}
+</p>
+
+
+
+<p>
+👤 Продавец:
+<br>
+${item.user}
+</p>
+
+
+
+<button class="shop-button"
+onclick="buyProduct('${item.type}')">
+🛒 Купить
+</button>
+
+
+
+</div>
+
+`;
+
+});
+
+
+
+html += `
+
+</div>
+
+`;
+
+
+document.getElementById("app").innerHTML = html;
+
+
+}
+
+
+
+// 💲 Доллары
+
+function createMoney(){
+
+let box=document.getElementById("money-container");
+
+if(!box)return;
+
+
+for(let i=0;i<30;i++){
+
+let money=document.createElement("div");
+
+money.className="money";
+
+money.innerHTML="💲";
+
+money.style.left=Math.random()*100+"%";
+
+box.appendChild(money);
+
+}
+
+}
+
+
+
+// 🏠 Назад
+
+function goHome(){
+
+window.location.href="../index.html";
+
+}
 
 
 // 🚀 Запуск
 
 window.onload = function(){
 
-    showHome();
+    showSellMenu();
 
-    createSnow();
+    createMoney();
 
 };
 
 
 
-// 📱 Telegram
+function changePage(html){
 
-let telegramId = null;
-let telegramName = null;
+let app = document.getElementById("app");
 
-try {
 
-    if(window.Telegram && Telegram.WebApp){
+app.classList.remove("fade-in");
 
-        Telegram.WebApp.ready();
+app.classList.add("fade-out");
 
-        let user = Telegram.WebApp.initDataUnsafe.user;
 
-        if(user){
 
-            telegramId = user.id;
+setTimeout(()=>{
 
-            telegramName = user.username
-            ? "@" + user.username
-            : user.first_name;
 
-        }
+app.innerHTML = html;
 
-    }
 
-} catch(e){
+app.classList.remove("fade-out");
 
-    console.log("Telegram не найден");
+app.classList.add("fade-in");
+
+
+},400);
+
 
 }
-
-
-if(user){
-
-    telegramId = user.id;
-
-    telegramName = user.username
-    ? "@" + user.username
-    : user.first_name;
-
-}
-
-
-console.log("ID:", telegramId);
-console.log("Имя:", telegramName);

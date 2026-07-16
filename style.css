@@ -9,7 +9,7 @@ body {
 
     min-height:100vh;
 
-    font-family:'Inter', sans-serif;
+    font-family:'Inter',sans-serif;
 
     overflow:hidden;
 
@@ -27,20 +27,90 @@ body {
 
     inset:0;
 
+
     background:
     linear-gradient(
-        rgba(0,0,0,.5),
+        rgba(0,0,0,.45),
         rgba(0,0,0,.65)
     ),
     url("images/fon.jpg");
+
 
     background-size:cover;
 
     background-position:center;
 
-    background-repeat:no-repeat;
-
     z-index:-1;
+
+}
+
+
+
+/* 🌸 САКУРА */
+
+#sakura-container {
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:1;
+
+}
+
+
+
+.petal {
+
+    position:absolute;
+
+    top:-30px;
+
+    color:#ffb7d5;
+
+    font-size:20px;
+
+    animation:fall linear infinite;
+
+}
+
+
+
+@keyframes fall {
+
+
+    0% {
+
+        transform:
+        translateY(-30px)
+        translateX(0)
+        rotate(0deg);
+
+    }
+
+
+    50% {
+
+        transform:
+        translateY(50vh)
+        translateX(40px)
+        rotate(180deg);
+
+    }
+
+
+    100% {
+
+        transform:
+        translateY(110vh)
+        translateX(-40px)
+        rotate(360deg);
+
+    }
 
 }
 
@@ -58,13 +128,15 @@ body {
 
     margin:auto;
 
-    padding:25px 20px;
+    padding:20px;
 
     display:flex;
 
     flex-direction:column;
 
     align-items:center;
+
+    justify-content:flex-start;
 
     position:relative;
 
@@ -74,7 +146,7 @@ body {
 
 
 
-/* 🎮 БАННЕР */
+/* БАННЕР */
 
 .wood-banner {
 
@@ -82,13 +154,20 @@ body {
 
     height:180px;
 
+
     background:url("images/banner.jpg");
+
 
     background-size:cover;
 
     background-position:center;
 
+
     border-radius:25px;
+
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.7);
 
 }
 
@@ -97,66 +176,73 @@ body {
 /* МЕНЮ */
 
 .menu {
-
     width:100%;
-
-    margin-top:40px;
-
+    margin-top:20px;
     display:flex;
-
     flex-direction:column;
-
     gap:15px;
-
 }
 
 
 
-/* КНОПКИ-КАРТИНКИ */
+/* КНОПКИ */
 
-.shop-image-button {
+.shop-button {
 
     width:100%;
 
-    height:55px;
+    height:60px;
 
-    object-fit:cover;
-
-    display:block;
 
     border-radius:20px;
 
+
+    border:none;
+
+
+    background:rgba(15,15,15,.9);
+
+
+    color:white;
+
+
+    font-size:20px;
+
+
+    font-weight:700;
+
+
     cursor:pointer;
+
 
     transition:.3s;
 
-    box-shadow:
 
-    0 12px 35px rgba(0,0,0,.55);
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.6);
 
 }
 
 
 
-.shop-image-button:hover {
+.shop-button:hover {
 
     transform:scale(1.03);
 
-}
 
-
-
-.shop-image-button:active {
-
-    transform:scale(.97);
+    box-shadow:
+    0 0 30px orange;
 
 }
 
 
 
-/* ОБЫЧНЫЕ КНОПКИ */
+/* ================= */
+/* 📦 ЗАЯВКА */
+/* ================= */
 
-.shop-button {
+
+.shop-input {
 
     width:100%;
 
@@ -166,91 +252,88 @@ body {
 
     border:none;
 
-    background:rgba(15,15,15,.9);
+    padding:15px;
+
+    background:rgba(255,255,255,.12);
 
     color:white;
 
-    font-size:20px;
-
-    font-weight:700;
+    font-size:17px;
 
 }
 
 
 
-/* ===================== */
-/* ❄️ СНЕЖИНКИ */
-/* ===================== */
+textarea.shop-input {
+
+    height:120px;
+
+    resize:none;
+
+}
 
 
-#snow-container {
 
-    position:fixed;
+.price-row {
 
-    top:0;
+    display:flex;
 
-    left:0;
+    gap:10px;
+
+}
+
+
+
+.price-row .shop-input {
+
+    flex:1;
+
+}
+
+
+
+/* ================= */
+/* 🛒 ТОВАР */
+/* ================= */
+
+.product-card {
 
     width:100%;
 
-    height:100%;
+    background:rgba(0,0,0,.6);
 
-    pointer-events:none;
+    border-radius:20px;
 
-    overflow:hidden;
+    padding:20px;
 
-    z-index:10;
-
-}
-
-
-
-.snowflake {
-
-    position:absolute;
-
-    top:-50px;
-
-    color:white;
-
-    user-select:none;
-
-    pointer-events:none;
-
-    opacity:.8;
-
-    animation:snowFall linear infinite;
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.5);
 
 }
 
 
 
-/* ПАДЕНИЕ СНЕГА */
+#app {
 
-@keyframes snowFall {
+    width:100%;
 
+    margin-top:0;
 
-    0% {
-
-        transform:
-
-        translateY(-50px)
-
-        rotate(0deg);
-
-    }
+}
 
 
-    100% {
 
-        transform:
+.menu {
 
-        translateY(110vh)
+    margin-top:0 !important;
 
-        rotate(360deg);
+}
 
-    }
 
+
+#app {
+    position: relative;
+    top: -600px;
 }
 
 
